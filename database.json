@@ -1,0 +1,110 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "LD01 LOUNGE CHAIR",
+      "price": "2428923590",
+      "image": "image/1.png",
+      "description": "Expertly rendered by Carl Hansen & Søn, the lounge chair—first introduced in 1951 and enduring ever since—is available in oak or as a combination of oak and walnut, sourced from sustainable forestry. Choose from seat and back upholstery in a selection of leather options or in a custom fabric.",
+      "category": "1"
+    },
+    {
+      "id": "2",
+      "name": "LD02 LOUNGE CHAIR",
+      "price": "2500000",
+      "image": "image/2.png",
+      "description": "Expertly rendered by Carl Hansen & Søn, the lounge chair—first introduced in 1951 and enduring ever since—is available in oak or as a combination of oak and walnut, sourced from sustainable forestry. Choose from seat and back upholstery in a selection of leather options or in a custom fabric.",
+      "category": "4"
+    },
+    {
+      "id": "3",
+      "name": " LD03 LOUNGE CHAIR",
+      "price": "2900000",
+      "image": "image/3.png",
+      "description": "Expertly rendered by Carl Hansen & Søn, the lounge chair—first introduced in 1951 and enduring ever since—is available in oak or as a combination of oak and walnut, sourced from sustainable forestry. Choose from seat and back upholstery in a selection of leather options or in a custom fabric.",
+      "category": "4"
+    },
+    {
+      "id": "4",
+      "name": " LD04 LOUNGE CHAIR",
+      "price": "20000078",
+      "image": "image/4.png",
+      "description": "Expertly rendered by Carl Hansen & Søn, the lounge chair—first introduced in 1951 and enduring ever since—is available in oak or as a combination of oak and walnut, sourced from sustainable forestry. Choose from seat and back upholstery in a selection of leather options or in a custom fabric.",
+      "category": "1"
+    },
+    {
+      "id": "5",
+      "name": " LD05 LOUNGE CHAIR",
+      "price": "3000000",
+      "image": "image/5.png",
+      "description": "Expertly rendered by Carl Hansen & Søn, the lounge chair—first introduced in 1951 and enduring ever since—is available in oak or as a combination of oak and walnut, sourced from sustainable forestry. Choose from seat and back upholstery in a selection of leather options or in a custom fabric.",
+      "category": "3"
+    },
+    {
+      "id": "6",
+      "name": " LD06 LOUNGE CHAIR",
+      "price": 2003223,
+      "image": "image/6.png",
+      "description": "Expertly rendered by Carl Hansen & Søn, the lounge chair—first introduced in 1951 and enduring ever since—is available in oak or as a combination of oak and walnut, sourced from sustainable forestry. Choose from seat and back upholstery in a selection of leather options or in a custom fabric.",
+      "category": "4"
+    },
+    {
+      "id": "7",
+      "name": " LD07 LOUNGE CHAIR",
+      "price": 2004343,
+      "image": "image/7.png",
+      "description": "Expertly rendered by Carl Hansen & Søn, the lounge chair—first introduced in 1951 and enduring ever since—is available in oak or as a combination of oak and walnut, sourced from sustainable forestry. Choose from seat and back upholstery in a selection of leather options or in a custom fabric.",
+      "category": "4"
+    },
+    {
+      "id": "8",
+      "name": " LD08 LOUNGE CHAIR",
+      "price": 1141981,
+      "image": "image/7.png",
+      "description": "Expertly rendered by Carl Hansen & Søn, the lounge chair—first introduced in 1951 and enduring ever since—is available in oak or as a combination of oak and walnut, sourced from sustainable forestry. Choose from seat and back upholstery in a selection of leather options or in a custom fabric.",
+      "category": "5"
+    }
+  ],
+  "category": [
+    {
+      "id": "1",
+      "image": "https://tse4.mm.bing.net/th?id=OIP.pUN8nZrwAXc6Osn-VS4G1AHaD3&pid=Api&P=0&h=180",
+      "name": "Ghế phòng ăn",
+      "status": "Hoạt động"
+    },
+    {
+      "id": "2",
+      "image": "https://tse1.mm.bing.net/th?id=OIP.4gpwx5_ZfKu3esxKwU9DCwHaFj&pid=Api&P=0&h=180",
+      "name": "Ghế phòng ngủ",
+      "status": "Hoạt động"
+    },
+    {
+      "id": "3",
+      "image": "https://tse4.explicit.bing.net/th?id=OIP.CLJo5f2-amiWmymG02DLVwHaE8&pid=Api&P=0&h=180",
+      "name": "Ghế phòng khách",
+      "status": "Hoạt động"
+    },
+    {
+      "id": "4",
+      "image": "https://tse4.mm.bing.net/th?id=OIP.DXqc79Evo2p68PWmxj3ocgHaD0&pid=Api&P=0&h=180",
+      "name": "Ghế phòng bếp",
+      "status": "Hoạt động"
+    },
+    {
+      "id": "5",
+      "image": "https://tse2.mm.bing.net/th?id=OIP.MBZyoKqm2FMSQ8PLfI9NaAHaE8&pid=Api&P=0&h=180",
+      "name": "Ghế công thái học",
+      "status": "Hoạt động"
+    }
+  ],
+  "status": [
+    {
+      "id": "1",
+      "name": "Hoạt động"
+    },
+    {
+      "id": "2",
+      "name": "Không hoạt động"
+    }
+  ]
+}

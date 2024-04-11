@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="/lib/style1.css">
+<style>
+    form,h2{
+        margin-left: 2.5%;
+    }
+</style>
+<br><br>
+<section class="mt-5">
+    <div class="bg-light py-5">
+      <div class="container">
+        <div class="d-flex justify-content-between">
+          <h1 class="fw-bold">Xem chi tiết sản phẩm</h1>
+          <nav class="pt-3" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a class="nav-link" href="#!/shop">Shop</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Detail Products</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+</section>
+<br>
+<body>
+  <div class="container1">
+    <div class="detail">
+        <div class="image">
+            <img src="">
+        </div>
+        <div class="content">
+            <h1 class="name"></h1>
+            <div class="category" style="color: red; font-style:initial"></div>
+            <div class="price"></div>
+            <div class="buttons">
+                <button>Check Out</button>
+                <button>Add To Cart 
+                    <span>
+                        <svg class="" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1"/>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+            <div class="description"></div>
+        </div>
+    </div>
+    <div class="title mt-5">Similar product</div>
+    <div class="listProduct">
+      <!-- Thêm nút mũi tên điều hướng -->
+      <!-- <div class="arrow arrow-left">&#10094;</div> -->
+      <!-- Các sản phẩm -->
+      <!-- Thêm nút mũi tên điều hướng -->
+      <!-- <div class="arrow arrow-right">&#10095;</div> -->
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        var arrows = document.querySelectorAll('.arrow');
+    
+        arrows.forEach(function(arrow) {
+            arrow.addEventListener('click', function() {
+                // Thêm lớp clicked vào mũi tên được nhấp vào
+                arrow.classList.add('clicked');
+    
+                // Loại bỏ lớp clicked sau 300ms (sau khi hoàn thành hiệu ứng chuyển đổi)
+                setTimeout(function() {
+                    arrow.classList.remove('clicked');
+                }, 300);
+            });
+        });
+    });
+    
+    </script>
+  
+  </div>
+</body>
+<br><br><br><br>

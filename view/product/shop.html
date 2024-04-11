@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/lib/style.css">
+</head>
+<section class="mt-5">
+    <div class="bg-light py-5">
+      <div class="container">
+        <div class="d-flex justify-content-between">
+          <h1 class="fw-bold">Danh sách sản phẩm</h1>
+          <nav class="pt-3" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a class="nav-link" href="#!/home">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Shop</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+<body ng-app="shopApp" ng-controller="ShopController">
+    <div class="container mt-5">
+        <div class="listProduct">
+            <div class="item" ng-repeat="product in products.slice(calculateIndexes()[0], calculateIndexes()[1])">
+                <div class="img">
+                    <img ng-src="{{product.image}}" alt="">
+                </div>
+                <div class="content">
+                    <div class="title">{{product.name}}</div>
+                    <!-- Sử dụng filter 'limitTo' để cắt mô tả xuống 50 kí tự -->
+                    <div class="des">{{product.description | limitTo:50}} {{product.description.length > 50 ? '...' : ''}}</div>
+                    <!-- Thêm một nút "Xem thêm" để hiển thị toàn bộ mô tả -->
+                   
+                    <div class="price">{{ product.price | number }} VNĐ</div>
+                    <button class="add" ng-click="onDetail(product.id)">Xem chi tiết</button>          
+                </div>
+            </div>
+        </div>
+        
+       <!-- Pagination -->
+      <ul class="pagination justify-content-end mx-5">
+        <li class="page-item">
+          <a class="page-link" href="" ng-click="currentPage = currentPage - 1" ng-disabled="currentPage === 1" ng-class="{ 'disabled': currentPage === 1 }">Previous</a>
+        </li>
+        <li class="page-item" ng-repeat="page in getPageNumbers()">
+          <a class="page-link" href="" ng-click="currentPage = page" ng-class="{ 'active': currentPage === page }">{{page}}</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="" ng-click="currentPage = currentPage + 1" ng-disabled="currentPage >= totalPages" ng-class="{ 'disabled': currentPage >= totalPages }">Next</a>
+        </li>
+      </ul>
+
+    </div>
+    <br><br>
+</body>
+</html>

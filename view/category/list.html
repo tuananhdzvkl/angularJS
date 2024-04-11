@@ -1,0 +1,167 @@
+<style>
+    table,h2{
+        margin-left: 2.5%;
+       
+    }
+</style>
+<br><br>
+
+<link rel="stylesheet" href="/lib/style2.css">
+<section class="mt-5">
+    <div class="bg-light py-5">
+      <div class="container">
+        <div class="d-flex justify-content-between">
+          <h1 class="fw-bold">Danh sách danh mục</h1>
+          <nav class="pt-3" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a class="nav-link" href="#!/home">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Category</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+<table class="table table-striped" style="width: 95%">
+
+    <div class="list">
+      <a class="btn btn-success mt-5" style="margin-left: 2.5%;" ng-click="onAdd()" data-bs-toggle="modal" data-bs-target="#addModal">Tạo mới danh mục</a>
+      <thead style="text-align: center;">
+          <tr>
+              <th>ID</th>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Status</th>
+              <th>Action</th>
+          </tr>
+      </thead>
+      <tbody style="text-align: center" class="table table-striped">
+        <tr ng-repeat="item in category">
+            <td>{{item.id}}</td>
+            <td><img ng-src="{{item.image}}" style="max-width: 120px; max-height: 120px;" class="rounded-circle" alt="Cinque Terre"></td>
+            <td class="text-primary">{{item.name}}</td>
+            <td style="font-weight: 450;" ng-class="{ 'text-success': item.status === 'Hoạt động', 'text-secondary': item.status === 'Không hoạt động' }">{{item.status}}</td>
+            <td>
+                <a ng-click="onEdit(item.id)" data-bs-toggle="modal" data-bs-target="#editModal" class="btn btn-warning">Sửa</a>
+                <a ng-click="saveId(item.id)" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Xóa</a>
+            </td>
+        </tr>
+      </tbody>     
+    </div>
+ 
+  
+</table>
+
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+         <h2 class="modal-title" id="editModalLabel">Edit Category</h2>
+         <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="#" id="myForm">
+            <div class="imgholder">
+             <label for="uploadimg" class="upload">
+               <input type="file" name="" id="uploadimg" class="picture">
+               <i class="fa-solid fa-plus"></i>
+             </label>
+                <img ng-src="{{editCategory.image}}" alt="" class="img" style="max-width: 100px; width: 120px;">
+            </div>
+ 
+            <div class="inputFieldContainer">
+                <div class="nameField">
+                  <div class="nameField">
+                    <div class="form_control">
+                        <label>Name</label>
+                        <input class="form-control" type="text" required ng-model="editCategory.name">
+                    </div>   
+                  </div>
+                </div>
+ 
+                <div class="form_control">
+                  <label>Status</label>
+                  <select class="form-control" ng-model="editCategory.status">
+                      <option>Hoạt động</option>
+                      <option>Không hoạt động</option>
+                  </select>
+              </div>
+            </div>
+        </form>
+     </div>
+      <div class="modal-footer">
+        <button type="button" ng-click="confirmEdit()" class="btn btn-danger">Xác nhận</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+      </div>
+  </div>
+  </div>
+</div>
+
+<!-- Add Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true" >
+  <div class="modal-dialog" style="max-width: 39pc;">
+    <div class="modal-content">
+      <div class="modal-header">
+         <h2 class="modal-title" id="addModalLabel">Add Category</h2>
+         <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="#" id="myForm">
+            <div class="inputFieldContainer">
+                <div class="nameField">
+                  <div class="nameField">
+                    <div class="form_control">
+                      <label>URL Ảnh</label>
+                      <input class="form-control" type="text" required ng-model="inputValue.image">
+                      <span ng-show="kiemTraDuLieu.image == true" style="color: red;">⚠️Vui lòng nhập url ảnh</span>
+                  </div>   
+                    <div class="form_control">
+                        <label>Name</label>
+                        <input class="form-control" type="text" required ng-model="inputValue.name">
+                        <span ng-show="kiemTraDuLieu.name == true" style="color: red;">⚠️Vui lòng nhập tên</span>
+                    </div>   
+                  </div>
+                </div>
+ 
+                <div class="form_control">
+                  <label>Status</label>
+                  <select class="form-control" ng-model="inputValue.status">
+                      <option value="" hidden>--- Lựa chọn trạng thái ---</option>
+                      <option>Hoạt động</option>
+                      <option>Không hoạt động</option>
+                  </select>
+                  <span ng-show="kiemTraDuLieu.name == true" style="color: red;">⚠️Vui lòng chọn trạng thái</span>
+              </div>
+            </div>
+        </form>
+     </div>
+      <div class="modal-footer">
+        <button type="button" ng-click="confirmAdd()" class="btn btn-primary">Thêm</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+      </div>
+  </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              Bạn có chắc chắn muốn xóa không?
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+              <button type="button" ng-click="confirmDelete()" class="btn btn-danger">Xác nhận xóa</button>
+          </div>
+      </div>
+  </div>
+</div>
+<br><br>

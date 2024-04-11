@@ -1,0 +1,76 @@
+
+
+.listProduct{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+   
+}
+
+
+.item .img img{
+    height:200px;
+    transition: 0.5s;
+    
+}
+.item .img{
+    background-image: linear-gradient(to top right,
+        #D89CD1, #D499D4
+    );
+    padding:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    
+}
+.item .content{
+    background-color: #ffffff24;
+    border-radius: 30px;
+    padding:50px 30px;
+    transform: translate(0,-50px);
+    backdrop-filter: blur(20px);
+    color:#fff;
+    background-image: linear-gradient(to top right,
+    #ac5d8d, #c183c1
+);
+}
+.title{
+    font-size: x-large;
+}
+.item .content .des{
+    opacity: .7;
+    margin:10px 0;
+}
+.item .content .price{
+    font-size: large;
+    letter-spacing: 3px;
+    margin-bottom:10px;
+}
+.item .content .add{
+    background-color: #B192EF;
+    padding:20px;
+    color:#fff;
+    width:100%;
+    border:none;
+    border-radius: 30px;
+}
+.item:hover img{
+    transform: translate(0,-50px);
+}
+.listPage{
+    padding:10px;
+    text-align: center;
+    list-style: none;
+}
+.listPage li{
+    background-color: #ffffffBD;
+    padding:20px;
+    display: inline-block;
+    margin:0 10px;
+    cursor: pointer;
+}
+.listPage .active{
+    background-color: #B192EF;
+    color:#fff;
+}

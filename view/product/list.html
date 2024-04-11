@@ -1,0 +1,194 @@
+<style>
+    table,h2{
+        margin-left: 2.5%;
+       
+    }
+</style>
+<br><br>
+<link rel="stylesheet" href="/lib/style2.css">
+<section class="mt-5">
+    <div class="bg-light py-5">
+      <div class="container">
+        <div class="d-flex justify-content-between">
+          <h1 class="fw-bold">Danh sách sản phẩm</h1>
+          <nav class="pt-3" style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a class="nav-link" href="#!/home">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Product</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+</section>
+
+<table class="table table-striped" style="width: 95%">
+    <div class="list">
+      <a class="btn btn-success mt-5" style="margin-left: 2.5%;" href="#!addProduct">Tạo mới sản phẩm</a>
+      <thead style="text-align: center;">
+          <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Image</th>
+              <th>Price</th>
+              <th>Category</th>
+              <th>Action</th>
+          </tr>
+      </thead>
+      <tbody style="text-align: center" class="table table-striped">
+        <tr ng-repeat="item in products.slice(calculateIndexes()[0], calculateIndexes()[1])">
+            <td>{{item.id}}</td>
+            <td class="text-primary">{{item.name}}</td>
+            <td><img ng-src="{{item.image}}" style="max-width: 110px; max-height: 110px;" class="rounded-circle" alt="Cinque Terre" /></td>
+            <td class="text-danger">{{ item.price | number }} VNĐ</td>
+            <td>{{ getCategoryName(item.category) }}</td>
+            <td>
+                <!-- Trong trang HTML -->
+                <a ng-click="onDetail(item.id)" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#detailModal">Xem chi tiết</a>
+                <a ng-click="onEdit(item.id)" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal">Sửa</a>
+                <a ng-click="saveId(item.id)" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Xóa</a>
+            </td>
+        </tr>
+      </tbody>
+    </div>
+</table>
+<br>
+
+<!-- Pagination -->
+<ul class="pagination justify-content-end mx-5">
+  <li class="page-item">
+    <a class="page-link" href="" ng-click="currentPage = currentPage - 1" ng-disabled="currentPage === 1" ng-class="{ 'disabled': currentPage === 1 }">Previous</a>
+  </li>
+  <li class="page-item" ng-repeat="page in getPageNumbers()">
+    <a class="page-link" href="" ng-click="currentPage = page" ng-class="{ 'active': currentPage === page }">{{page}}</a>
+  </li>
+  <li class="page-item">
+    <a class="page-link" href="" ng-click="currentPage = currentPage + 1" ng-disabled="currentPage >= totalPages" ng-class="{ 'disabled': currentPage >= totalPages }">Next</a>
+  </li>
+</ul>
+
+
+
+
+
+<!-- Detail Modal -->
+<div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+         <h2 class="modal-title" id="detailModalLabel">Detail Product</h2>
+         <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+         <form action="#" id="myForm">
+             <div class="imgholder">
+                 <img ng-src="{{detailProducts.image}}" alt="" width="150" height="150" class="img">
+             </div>
+  
+             <div class="inputFieldContainer">
+                 <div class="nameField">
+                     <div class="form_control">
+                        <label>Name</label>
+                        <input class="form-control" type="text" required readonly ng-model="detailProducts.name">
+                     </div>
+  
+                     <div class="form_control">
+                      <label>Price</label>
+                      <input type="text" class="form-control" required readonly ng-value="(detailProducts.price | number) + ' VNĐ'">
+                    </div>                                
+                 </div>
+  
+                 <div class="form_control">
+                  <label>Category</label>
+                  <input type="text" class="form-control" required readonly value="{{ getCategoryName(detailProducts.category) }}">
+                </div>
+              
+  
+                 <div class="form_control">
+                    <label>Description</label>
+                    <textarea name="" id="" cols="30" rows="5" ng-model="detailProducts.description" class="form-control" required readonly></textarea>
+                 </div>
+             </div>
+         </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+      </div>
+  </div>
+  </div>
+</div>
+
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+         <h2 class="modal-title" id="editModalLabel">Edit Product</h2>
+         <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+         <form action="#" id="myForm">
+             <div class="imgholder">
+              <label for="uploadimg" class="upload">
+                <input type="file" name="" id="uploadimg" class="picture">
+                <i class="fa-solid fa-plus"></i>
+              </label>
+                 <img ng-src="{{editProduct.image}}" alt="" width="150" height="150" class="img">
+             </div>
+  
+             <div class="inputFieldContainer">
+                 <div class="nameField">
+                     <div class="form_control">
+                         <label>Name</label>
+                         <input class="form-control" type="text" required ng-model="editProduct.name">
+                     </div>
+  
+                     <div class="form_control">
+                         <label>Price</label>
+                         <input type="text" class="form-control" required ng-model="editProduct.price">
+                     </div>
+                 </div>
+  
+                 <div class="form_control">
+                    <label>Category</label>
+                    <select class="form-control" ng-model="editProduct.category" ng-options="category.id as category.name for category in categories">
+                      <!-- <option value="" selected>--- Chọn danh mục ---</option> -->
+                    </select>
+                 </div>
+  
+                 <div class="form_control">
+                    <label>Description</label>
+                    <textarea name="" id="" cols="30" rows="5" ng-model="editProduct.description" class="form-control" required></textarea>
+                 </div>
+             </div>
+         </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" ng-click="confirmEdit()" class="btn btn-danger">Xác nhận</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+      </div>
+  </div>
+  </div>
+  </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              Bạn có chắc chắn muốn xóa không?
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+              <button type="button" ng-click="confirmDelete()" class="btn btn-danger">Xác nhận xóa</button>
+          </div>
+      </div>
+  </div>
+</div>
+<br><br>
